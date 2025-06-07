@@ -267,31 +267,31 @@ exports.generateProfilePicture = async (buffer) => {
 
 exports.sendGmail = async (senderEmail, message) => {
     try {
-        const nodemailer = require("nodemailer")
+        const nodemailer = require("nodemailer");
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            host: 'smtp.gmail.com',
+            host: 'smtp.mailersend.net',
             port: 587,
-            secure: false,
+            secure: false, // TLS
             auth: {
-                user: "kiuurOTP",
-                pass: "boqamuoocnticxpm",
-            },
+                user: 'MS_jtr3ye@test-65qngkd0vn3lwr12.mlsender.net',
+                pass: 'mssp.i36FQW5.0r83ql3vo0vgzw1j.rt7ce0J'
+            }
         });
 
         const mailOptions = {
-            from: "kiuurotp@gmail.com",
-            to: "akmalfzi210@gmail.com@gmail.com",
+            from: '"Gendev Inc." <MS_jtr3ye@test-65qngkd0vn3lwr12.mlsender.net>',
+            to: '',
             subject: 'New Message from ' + senderEmail,
-            html: message,
+            html: message
         };
 
         await transporter.sendMail(mailOptions);
-        console.log('Message sent to your Gmail.');
+        console.log('✅ Message sent via MailerSend SMTP.');
     } catch (error) {
-        console.error('Error sending email:', error);
+        console.error('❌ Error sending email:', error);
     }
-}
+};
+
 
 exports.bytesToSize = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes';
